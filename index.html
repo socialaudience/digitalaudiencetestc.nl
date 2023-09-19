@@ -1,11 +1,23 @@
+<script src="https://cookiebaker.test.digitalaudience.link/bakery/scripts_dev/da_dev.js"></script>
+<style>
+    body {
+        background-color: dimgrey;
+    }
+</style>
 <body>
     <h1>digitalaudiencetestc.nl</h1>
+    <pre>
+    <code id="data"></code>
+    </pre>
+    <iframe src="https://cookiebaker.test.digitalaudience.link/bakery" sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin"></iframe>
     <script>
-        let s = document.createElement('script');
-        s.src = "https://cookiebaker.test.digitalaudience.link/bakery/scripts_dev/da_dev.js";
-        s.addEventListener("load", (e) => {
-            __da.bake({ car: 0, chips: 1 }); s.remove();
-        }, false);
-        document.body.appendChild(s);
+        const output = document.getElementById("data");
+
+        async function work() {
+            const da = await __da.get_da({});
+            output.textContent = da;
+        }
+
+        work();
     </script>
 </body>
